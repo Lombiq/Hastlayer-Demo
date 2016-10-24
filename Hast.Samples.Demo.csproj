@@ -50,21 +50,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Licence.md" />
+    <None Include="Readme.md" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Drivers\Hast.Xilinx\Hast.Xilinx.csproj">
+    <ProjectReference Include="..\..\Drivers\Hast.Xilinx\Hast.Xilinx.csproj">
       <Project>{02be2213-f0e5-4107-bea4-ae396525a644}</Project>
       <Name>Hast.Xilinx</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Hast.Common\Hast.Common.csproj">
+    <ProjectReference Include="..\..\Hast.Common\Hast.Common.csproj">
       <Project>{6ee5898a-e450-4a1d-80af-ad27a8bd5e69}</Project>
       <Name>Hast.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Hast.Layer\Hast.Layer.csproj">
+    <ProjectReference Include="..\..\Hast.Layer\Hast.Layer.csproj">
       <Project>{0d77afba-1b4d-4083-b35c-3309251039b7}</Project>
       <Name>Hast.Layer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Hast.Transformer\Hast.Transformer.csproj">
+    <ProjectReference Include="..\..\Hast.Transformer\Hast.Transformer.csproj">
       <Project>{55ffec87-b87b-4bb6-b50d-26560c8f815a}</Project>
       <Name>Hast.Transformer</Name>
     </ProjectReference>
