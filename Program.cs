@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Hast.Common.Configuration;
 using Hast.Layer;
+using Hast.Transformer.Vhdl.Configuration;
+using Hast.VhdlBuilder.Representation;
 
 namespace Hast.Samples.Demo
 {
@@ -39,12 +42,18 @@ namespace Hast.Samples.Demo
                             MaxDegreeOfParallelism = ParallelAlgorithm.MaxDegreeOfParallelism
                         });
 
+                    configuration.VhdlTransformerConfiguration().VhdlGenerationOptions = VhdlGenerationOptions.Debug;
+
                     var hardwareRepresentation = await hastlayer.GenerateHardware(
                         new[]
                         {
                             typeof(Program).Assembly
                         },
                         configuration);
+
+                    File.WriteAllText(
+                        "Hast_IP.vhd",
+                        ((Transformer.Vhdl.Models.VhdlHardwareDescription)hardwareRepresentation.HardwareDescription).VhdlSource);
 
 
                     var parallelAlgorithm = await hastlayer.GenerateProxy(hardwareRepresentation, new ParallelAlgorithm());
