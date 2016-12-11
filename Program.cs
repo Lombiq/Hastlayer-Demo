@@ -19,19 +19,7 @@ namespace Hast.Samples.Demo
             {
                 using (var hastlayer = Xilinx.HastlayerFactory.Create())
                 {
-                    hastlayer.ExecutedOnHardware += (sender, e) =>
-                    {
-                        Console.WriteLine(
-                            "Executing " +
-                            e.MemberFullName +
-                            " on hardware took " +
-                            e.HardwareExecutionInformation.HardwareExecutionTimeMilliseconds +
-                            "ms (net) " +
-                            e.HardwareExecutionInformation.FullExecutionTimeMilliseconds +
-                            " milliseconds (all together)");
-                    };
-
-
+                    #region Configuration
                     var configuration = new HardwareGenerationConfiguration();
 
                     configuration.PublicHardwareMemberNamePrefixes.Add("Hast.Samples.Demo.ParallelAlgorithm");
@@ -44,6 +32,20 @@ namespace Hast.Samples.Demo
 
                     configuration.VhdlTransformerConfiguration().VhdlGenerationOptions = VhdlGenerationOptions.Debug;
 
+                    hastlayer.ExecutedOnHardware += (sender, e) =>
+                    {
+                        Console.WriteLine(
+                            "Executing " +
+                            e.MemberFullName +
+                            " on hardware took " +
+                            e.HardwareExecutionInformation.HardwareExecutionTimeMilliseconds +
+                            "ms (net) " +
+                            e.HardwareExecutionInformation.FullExecutionTimeMilliseconds +
+                            " milliseconds (all together)");
+                    };
+                    #endregion
+
+                    #region HardwareGeneration
                     var hardwareRepresentation = await hastlayer.GenerateHardware(
                         new[]
                         {
@@ -54,8 +56,9 @@ namespace Hast.Samples.Demo
                     File.WriteAllText(
                         "Hast_IP.vhd",
                         ((Transformer.Vhdl.Models.VhdlHardwareDescription)hardwareRepresentation.HardwareDescription).VhdlSource);
+                    #endregion
 
-
+                    #region Execution
                     var parallelAlgorithm = await hastlayer.GenerateProxy(hardwareRepresentation, new ParallelAlgorithm());
 
                     var output1 = parallelAlgorithm.Run(234234);
@@ -66,6 +69,7 @@ namespace Hast.Samples.Demo
                     var cpuOutput = new ParallelAlgorithm().Run(234234);
                     sw.Stop();
                     Console.WriteLine("On CPU it took " + sw.ElapsedMilliseconds + "ms.");
+                    #endregion
                 }
             }).Wait();
 
