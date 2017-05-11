@@ -24,7 +24,7 @@ namespace Hast.Samples.Demo
 
                     configuration.PublicHardwareMemberNamePrefixes.Add("Hast.Samples.Demo.ParallelAlgorithm");
 
-                    configuration.TransformerConfiguration().MemberInvocationInstanceCountConfigurations.Add(
+                    configuration.TransformerConfiguration().AddMemberInvocationInstanceCountConfiguration(
                         new MemberInvocationInstanceCountConfiguration("Hast.Samples.Demo.ParallelAlgorithm.Run.LambdaExpression.0")
                         {
                             MaxDegreeOfParallelism = ParallelAlgorithm.MaxDegreeOfParallelism
