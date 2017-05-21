@@ -22,10 +22,10 @@ namespace Hast.Samples.Demo
                     #region Configuration
                     var configuration = new HardwareGenerationConfiguration();
 
-                    configuration.PublicHardwareMemberNamePrefixes.Add("Hast.Samples.Demo.ParallelAlgorithm");
+                    configuration.AddPublicHardwareType<ParallelAlgorithm>();
 
                     configuration.TransformerConfiguration().AddMemberInvocationInstanceCountConfiguration(
-                        new MemberInvocationInstanceCountConfiguration("Hast.Samples.Demo.ParallelAlgorithm.Run.LambdaExpression.0")
+                        new MemberInvocationInstanceCountConfigurationForMethod<ParallelAlgorithm>(p => p.Run(null), 0)
                         {
                             MaxDegreeOfParallelism = ParallelAlgorithm.MaxDegreeOfParallelism
                         });
