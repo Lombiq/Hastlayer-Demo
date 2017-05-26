@@ -22,7 +22,7 @@ namespace Hast.Samples.Demo
                     #region Configuration
                     var configuration = new HardwareGenerationConfiguration();
 
-                    configuration.AddPublicHardwareType<ParallelAlgorithm>();
+                    configuration.AddHardwareEntryPointType<ParallelAlgorithm>();
 
                     configuration.TransformerConfiguration().AddMemberInvocationInstanceCountConfiguration(
                         new MemberInvocationInstanceCountConfigurationForMethod<ParallelAlgorithm>(p => p.Run(null), 0)
