@@ -20,7 +20,7 @@ namespace Hast.Samples.Demo
                 using (var hastlayer = Xilinx.HastlayerFactory.Create())
                 {
                     #region Configuration
-                    var configuration = new HardwareGenerationConfiguration();
+                    var configuration = new HardwareGenerationConfiguration("Nexys4 DDR");
 
                     configuration.AddHardwareEntryPointType<ParallelAlgorithm>();
 
