@@ -62,13 +62,13 @@
       <Project>{0d77afba-1b4d-4083-b35c-3309251039b7}</Project>
       <Name>Hast.Layer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Hast.Core\Hast.Transformer.Vhdl\Hast.Transformer.Vhdl.csproj">
-      <Project>{25810814-29c8-4b60-bc96-04b72f70e6b7}</Project>
-      <Name>Hast.Transformer.Vhdl</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Hast.Core\Hast.Transformer\Hast.Transformer.csproj">
       <Project>{55ffec87-b87b-4bb6-b50d-26560c8f815a}</Project>
       <Name>Hast.Transformer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Hast.Abstractions\Hast.Transformer.Vhdl.Abstractions\Hast.Transformer.Vhdl.Abstractions.csproj">
+      <Project>{0d13986f-fa33-4898-a0de-c173764663f0}</Project>
+      <Name>Hast.Transformer.Vhdl.Abstractions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
