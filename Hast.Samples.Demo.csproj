@@ -54,10 +54,6 @@
     <None Include="Readme.md" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Drivers\Hast.Xilinx\Hast.Xilinx.csproj">
-      <Project>{02be2213-f0e5-4107-bea4-ae396525a644}</Project>
-      <Name>Hast.Xilinx</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Hast.Common\Hast.Common.csproj">
       <Project>{6ee5898a-e450-4a1d-80af-ad27a8bd5e69}</Project>
       <Name>Hast.Common</Name>
@@ -73,10 +69,6 @@
     <ProjectReference Include="..\..\Hast.Transformer\Hast.Transformer.csproj">
       <Project>{55ffec87-b87b-4bb6-b50d-26560c8f815a}</Project>
       <Name>Hast.Transformer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Hast.VhdlBuilder\Hast.VhdlBuilder.csproj">
-      <Project>{131E80D3-29BD-496C-BE31-45A329AE3E67}</Project>
-      <Name>Hast.VhdlBuilder</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

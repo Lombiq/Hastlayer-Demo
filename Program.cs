@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Hast.Common.Configuration;
+using Hast.Common.Models;
 using Hast.Layer;
 using Hast.Transformer.Vhdl.Configuration;
 using Hast.VhdlBuilder.Representation;
@@ -17,7 +18,7 @@ namespace Hast.Samples.Demo
         {
             Task.Run(async () =>
             {
-                using (var hastlayer = Xilinx.HastlayerFactory.Create())
+                using (var hastlayer = Hastlayer.Create())
                 {
                     #region Configuration
                     var configuration = new HardwareGenerationConfiguration("Nexys4 DDR");
@@ -53,9 +54,7 @@ namespace Hast.Samples.Demo
                         },
                         configuration);
 
-                    File.WriteAllText(
-                        "Hast_IP.vhd",
-                        ((Transformer.Vhdl.Models.VhdlHardwareDescription)hardwareRepresentation.HardwareDescription).VhdlSource);
+                    await hardwareRepresentation.HardwareDescription.WriteSource("Hast_IP.vhd");
                     #endregion
 
                     #region Execution
