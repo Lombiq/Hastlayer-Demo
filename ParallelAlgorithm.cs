@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Hast.Transformer.SimpleMemory;
+using Hast.Transformer.Abstractions.SimpleMemory;
 
 namespace Hast.Samples.Demo
 {
