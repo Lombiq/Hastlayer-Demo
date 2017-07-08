@@ -18,7 +18,7 @@ namespace Hast.Samples.Demo
         {
             Task.Run(async () =>
             {
-                using (var hastlayer = Hastlayer.Create())
+                using (var hastlayer = await Hastlayer.Create())
                 {
                     #region Configuration
                     var configuration = new HardwareGenerationConfiguration("Nexys4 DDR");
