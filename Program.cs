@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Hast.Common.Configuration;
 using Hast.Layer;
-using Hast.Transformer.Vhdl.Configuration;
-using Hast.VhdlBuilder.Representation;
+using Hast.Transformer.Abstractions.Configuration;
+using Hast.Transformer.Vhdl.Abstractions.Configuration;
 
 namespace Hast.Samples.Demo
 {
@@ -17,10 +12,10 @@ namespace Hast.Samples.Demo
         {
             Task.Run(async () =>
             {
-                using (var hastlayer = Xilinx.HastlayerFactory.Create())
+                using (var hastlayer = await Hastlayer.Create())
                 {
                     #region Configuration
-                    var configuration = new HardwareGenerationConfiguration();
+                    var configuration = new HardwareGenerationConfiguration("Nexys4 DDR");
 
                     configuration.AddHardwareEntryPointType<ParallelAlgorithm>();
 
@@ -30,7 +25,7 @@ namespace Hast.Samples.Demo
                             MaxDegreeOfParallelism = ParallelAlgorithm.MaxDegreeOfParallelism
                         });
 
-                    configuration.VhdlTransformerConfiguration().VhdlGenerationOptions = VhdlGenerationOptions.Debug;
+                    configuration.VhdlTransformerConfiguration().VhdlGenerationMode = VhdlGenerationMode.Debug;
 
                     hastlayer.ExecutedOnHardware += (sender, e) =>
                     {
@@ -53,9 +48,7 @@ namespace Hast.Samples.Demo
                         },
                         configuration);
 
-                    File.WriteAllText(
-                        "Hast_IP.vhd",
-                        ((Transformer.Vhdl.Models.VhdlHardwareDescription)hardwareRepresentation.HardwareDescription).VhdlSource);
+                    await hardwareRepresentation.HardwareDescription.WriteSource("Hast_IP.vhd");
                     #endregion
 
                     #region Execution

@@ -44,6 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="ParallelAlgorithm.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,9 +57,9 @@
     <None Include="Readme.md" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Drivers\Hast.Xilinx\Hast.Xilinx.csproj">
-      <Project>{02be2213-f0e5-4107-bea4-ae396525a644}</Project>
-      <Name>Hast.Xilinx</Name>
+    <ProjectReference Include="..\..\Hast.Abstractions\Hast.Transformer.Abstractions\Hast.Transformer.Abstractions.csproj">
+      <Project>{9dee53c2-83ac-4048-adab-2993faffe4ea}</Project>
+      <Name>Hast.Transformer.Abstractions</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Hast.Common\Hast.Common.csproj">
       <Project>{6ee5898a-e450-4a1d-80af-ad27a8bd5e69}</Project>
@@ -66,17 +69,9 @@
       <Project>{0d77afba-1b4d-4083-b35c-3309251039b7}</Project>
       <Name>Hast.Layer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Hast.Transformer.Vhdl\Hast.Transformer.Vhdl.csproj">
-      <Project>{25810814-29c8-4b60-bc96-04b72f70e6b7}</Project>
-      <Name>Hast.Transformer.Vhdl</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Hast.Transformer\Hast.Transformer.csproj">
-      <Project>{55ffec87-b87b-4bb6-b50d-26560c8f815a}</Project>
-      <Name>Hast.Transformer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Hast.VhdlBuilder\Hast.VhdlBuilder.csproj">
-      <Project>{131E80D3-29BD-496C-BE31-45A329AE3E67}</Project>
-      <Name>Hast.VhdlBuilder</Name>
+    <ProjectReference Include="..\..\Hast.Abstractions\Hast.Transformer.Vhdl.Abstractions\Hast.Transformer.Vhdl.Abstractions.csproj">
+      <Project>{0d13986f-fa33-4898-a0de-c173764663f0}</Project>
+      <Name>Hast.Transformer.Vhdl.Abstractions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
